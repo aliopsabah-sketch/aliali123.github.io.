@@ -1,798 +1,538 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>RJ للأكلات السريعة | الكوت</title>
+<title>RJ للأكلات السريعة</title>
 
 <style>
+*{box-sizing:border-box;margin:0;padding:0}
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+body{
+font-family:Arial,Tahoma,sans-serif;
+background:#f7f7f7;
+color:#222;
+line-height:1.7
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #f7f7f7;
-    color: #222;
+header{
+background:#111;
+color:white;
+padding:18px 5%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+z-index:1000
 }
 
-header {
-    background: #111;
-    color: white;
-    padding: 18px 7%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.logo{
+font-size:24px;
+font-weight:bold;
+color:#ffb000
 }
 
-.logo {
-    font-size: 24px;
-    font-weight: bold;
+nav a{
+color:white;
+text-decoration:none;
+margin:0 8px
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin-right: 15px;
+.hero{
+min-height:420px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:40px 20px;
+background:
+linear-gradient(#0008,#0008),
+url("https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1400&q=80")
+center/cover
 }
 
-.hero {
-    min-height: 430px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    background:
-    linear-gradient(#0009,#0009),
-    url("https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1400&q=80")
-    center/cover;
-
-    color: white;
-    padding: 30px;
+.hero h1{
+font-size:45px;
+color:white;
+margin-bottom:15px
 }
 
-.hero h1 {
-    font-size: 45px;
-    margin-bottom: 15px;
+.hero p{
+color:white;
+font-size:20px
 }
 
-.hero p {
-    font-size: 20px;
-    margin-bottom: 25px;
+.btn{
+display:inline-block;
+margin-top:20px;
+padding:13px 25px;
+background:#ffb000;
+color:#111;
+text-decoration:none;
+border-radius:10px;
+font-weight:bold
 }
 
-.btn {
-    display: inline-block;
-    background: #e63946;
-    color: white;
-    padding: 13px 25px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
+section{
+padding:50px 6%
 }
 
-section {
-    padding: 50px 7%;
+.title{
+text-align:center;
+font-size:32px;
+margin-bottom:30px
 }
 
-.title {
-    text-align: center;
-    margin-bottom: 30px;
+.menu{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:20px
 }
 
-.title h2 {
-    font-size: 30px;
+.card{
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 4px 15px #0001;
+transition:.2s
 }
 
-.menu {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 20px;
+.card:hover{
+transform:translateY(-4px)
 }
 
-.food {
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 5px 20px #0002;
+.card img{
+width:100%;
+height:180px;
+object-fit:cover
 }
 
-.food img {
-    width: 100%;
-    height: 190px;
-    object-fit: cover;
+.card-content{
+padding:18px
 }
 
-.food-content {
-    padding: 18px;
+.card h3{
+font-size:21px
 }
 
-.food-content h3 {
-    margin-bottom: 7px;
+.price{
+color:#e58b00;
+font-size:19px;
+font-weight:bold;
+margin:8px 0
 }
 
-.price {
-    color: #e63946;
-    font-size: 19px;
-    font-weight: bold;
-    margin: 8px 0 15px;
+.add{
+width:100%;
+border:0;
+padding:12px;
+border-radius:8px;
+background:#111;
+color:white;
+cursor:pointer;
+font-size:16px
 }
 
-.add {
-    background: #111;
-    width: 100%;
+.cart{
+max-width:700px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 4px 15px #0001
 }
 
-.cart {
-    max-width: 700px;
-    margin: 50px auto 0;
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px #0002;
+.cart-item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:1px solid #ddd;
+padding:12px 0;
+gap:10px
 }
 
-.cart h2 {
-    margin-bottom: 20px;
+.qty button{
+border:0;
+background:#eee;
+padding:5px 10px;
+border-radius:5px;
+cursor:pointer
 }
 
-.cart-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px 0;
-    border-bottom: 1px solid #ddd;
+.total{
+font-size:20px;
+font-weight:bold;
+margin-top:20px
 }
 
-.total {
-    font-size: 22px;
-    font-weight: bold;
-    margin: 20px 0;
+input,textarea{
+width:100%;
+padding:13px;
+margin-top:10px;
+border:1px solid #ddd;
+border-radius:8px;
+font-size:16px
 }
 
-input,
-textarea {
-    width: 100%;
-    padding: 14px;
-    margin: 8px 0;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
+textarea{
+height:90px;
+resize:none
 }
 
-.whatsapp {
-    background: #168c45;
-    width: 100%;
-    margin-top: 10px;
+.order{
+width:100%;
+margin-top:15px;
+padding:14px;
+border:0;
+border-radius:9px;
+background:#25D366;
+color:white;
+font-size:18px;
+font-weight:bold;
+cursor:pointer
 }
 
-.about {
-    background: #111;
-    color: white;
-    text-align: center;
+.contact{
+text-align:center;
+background:#111;
+color:white
 }
 
-footer {
-    background: #111;
-    color: #aaa;
-    text-align: center;
-    padding: 20px;
+.contact a{
+color:#ffb000;
+text-decoration:none
 }
 
-@media(max-width:700px) {
-
-    header {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .menu {
-        grid-template-columns: 1fr;
-    }
-
-    .hero h1 {
-        font-size: 34px;
-    }
-
-    section {
-        padding: 40px 20px;
-    }
+footer{
+text-align:center;
+padding:20px;
+background:#000;
+color:#aaa
 }
 
+@media(max-width:600px){
+.hero h1{font-size:32px}
+.hero p{font-size:17px}
+
+header{
+flex-direction:column;
+gap:10px
+}
+
+nav a{
+font-size:14px
+}
+
+section{
+padding:35px 5%
+}
+}
 </style>
 </head>
 
-
 <body>
 
-
 <header>
-
-<div class="logo">
-🍔 RJ للأكلات السريعة
-</div>
+<div class="logo">RJ للأكلات السريعة 🍔</div>
 
 <nav>
-<a href="#menu">القائمة</a>
-<a href="#order">الطلب</a>
+<a href="#home">الرئيسية</a>
+<a href="#menu">المنيو</a>
+<a href="#cart">السلة</a>
 <a href="#contact">اتصل بنا</a>
 </nav>
-
 </header>
 
-
-
-<section class="hero">
-
+<section class="hero" id="home">
 <div>
-
-<h1>RJ للأكلات السريعة 🍔</h1>
-
-<p>طعم تحبه... وسرعة تستحقها</p>
-
-<a class="btn" href="#menu">
-اطلب الآن
-</a>
-
+<h1>RJ للأكلات السريعة</h1>
+<p>طعم تحبه... وسرعة تستحقها 🍔🔥</p>
+<p>الكوت - الخاجية - قرب مدرسة النهرين</p>
+<a href="#menu" class="btn">شوف المنيو</a>
 </div>
-
 </section>
-
-
 
 <section id="menu">
 
-<div class="title">
-
-<h2>🍔 قائمة الطعام</h2>
-
-<p>اختار وجبتك واضغط إضافة للطلب</p>
-
-</div>
-
+<h2 class="title">🍔 المنيو</h2>
 
 <div class="menu">
 
-
-<div class="food">
-
-<img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=80">
-
-<div class="food-content">
-
-<h3>🍔 برغر</h3>
-
-<p>برغر طازج ولذيذ</p>
-
+<div class="card">
+<img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80">
+<div class="card-content">
+<h3>برغر</h3>
 <div class="price">2,000 د.ع</div>
-
-<button class="btn add"
-onclick="addItem('برغر',2000)">
-إضافة للطلب
-</button>
-
+<button class="add" onclick="addToCart('برغر',2000)">أضف للسلة</button>
+</div>
 </div>
 
+<div class="card">
+<img src="https://images.unsplash.com/photo-1550317138-10000687a72b?auto=format&fit=crop&w=800&q=80">
+<div class="card-content">
+<h3>بركر بالجبن</h3>
+<div class="price">2,500 د.ع</div>
+<button class="add" onclick="addToCart('بركر بالجبن',2500)">أضف للسلة</button>
+</div>
 </div>
 
-
-
-<div class="food">
-
-<img src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=700&q=80">
-
-<div class="food-content">
-
-<h3>🧀 برغر بالجبن</h3>
-
-<p>برغر مع الجبن</p>
-
-<div class="price">2,500 د.ع</div><button class="btn add"
-onclick="addItem('برغر بالجبن',2500)">
-إضافة للطلب
-</button>
-
-</div>
-
-</div>
-
-
-
-<div class="food">
-
-<img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=700&q=80">
-
-<div class="food-content">
-
-<h3>🍗 ريزو</h3>
-
-<p>وجبة ريزو شهية</p>
-
+<div class="card">
+<img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80"><div class="card-content">
+<h3>ريزو</h3>
 <div class="price">4,000 د.ع</div>
-
-<button class="btn add"
-onclick="addItem('ريزو',4000)">
-إضافة للطلب
-</button>
-
+<button class="add" onclick="addToCart('ريزو',4000)">أضف للسلة</button>
+</div>
 </div>
 
-</div>
-
-
-
-<div class="food">
-
-<img src="https://images.unsplash.com/photo-1562967916-eb82221dfb92?auto=format&fit=crop&w=700&q=80">
-
-<div class="food-content">
-
-<h3>🍗 كنتاكي</h3>
-
-<p>دجاج مقرمش ولذيذ</p>
-
+<div class="card">
+<img src="https://images.unsplash.com/photo-1529059997568-3d847b1154f0?auto=format&fit=crop&w=800&q=80">
+<div class="card-content">
+<h3>كنتاكي</h3>
 <div class="price">5,000 د.ع</div>
-
-<button class="btn add"
-onclick="addItem('كنتاكي',5000)">
-إضافة للطلب
-</button>
-
+<button class="add" onclick="addToCart('كنتاكي',5000)">أضف للسلة</button>
+</div>
 </div>
 
-</div>
-
-
-
-<div class="food">
-
-<img src="https://images.unsplash.com/photo-1521305916504-4a1121188589?auto=format&fit=crop&w=700&q=80">
-
-<div class="food-content">
-
-<h3>🌯 صاج</h3>
-
-<p>صاج طازج</p>
-
+<div class="card">
+<img src="https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=800&q=80">
+<div class="card-content">
+<h3>صاج</h3>
 <div class="price">3,000 د.ع</div>
-
-<button class="btn add"
-onclick="addItem('صاج',3000)">
-إضافة للطلب
-</button>
-
+<button class="add" onclick="addToCart('صاج',3000)">أضف للسلة</button>
+</div>
 </div>
 
-</div>
-
-
-
-<div class="food">
-
-<img src="https://images.unsplash.com/photo-1576116101997-4b5717c7e5e6?auto=format&fit=crop&w=700&q=80">
-
-<div class="food-content">
-
-<h3>🍟 قدح فنكر</h3>
-
-<p>بطاطا مقرمشة</p>
-
+<div class="card">
+<img src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&w=800&q=80">
+<div class="card-content">
+<h3>قدح فنكر</h3>
 <div class="price">1,000 د.ع</div>
-
-<button class="btn add"
-onclick="addItem('قدح فنكر',1000)">
-إضافة للطلب
-</button>
-
+<button class="add" onclick="addToCart('قدح فنكر',1000)">أضف للسلة</button>
+</div>
 </div>
 
 </div>
+</section>
 
+<section id="cart">
 
-</div>
+<h2 class="title">🛒 سلة الطلب</h2>
 
-
-
-<div class="cart" id="order">
-
-<h2>🛒 طلبك</h2>
+<div class="cart">
 
 <div id="cartItems">
-لا توجد وجبات مضافة.
+السلة فارغة
 </div>
 
 <div class="total">
 المجموع: <span id="total">0</span> د.ع
 </div>
 
+<input id="name" placeholder="اسم الزبون">
 
-<input
-type="text"
-id="name"
-placeholder="اسمك">
+<input id="address" placeholder="العنوان">
 
+<textarea id="notes" placeholder="ملاحظات إضافية"></textarea>
 
-<input
-type="text"
-id="address"
-placeholder="العنوان / المنطقة">
-
-
-<textarea
-id="notes"
-placeholder="ملاحظات إضافية"></textarea>
-
-
-<button
-class="btn whatsapp"
-onclick="sendOrder()">
-
-🟢 إرسال الطلب عبر WhatsApp
-
+<button class="order" onclick="sendOrder()">
+📲 إرسال الطلب عبر واتساب
 </button>
 
 </div>
-
 </section>
 
+<section class="contact" id="contact">
 
+<h2 class="title">📞 اتصل بنا</h2>
 
-<section class="about">
+<p>📍 الكوت - الخاجية - قرب مدرسة النهرين</p>
 
-<div class="title">
+<p>📱 <a href="tel:07727071206">07727071206</a></p>
 
-<h2>عن RJ</h2>
-
-</div>
-
-<p>
-RJ للأكلات السريعة - الكوت الخاجية
-<br>
-قرب مدرسة النهرين
-</p>
+<a class="btn" href="https://wa.me/9647727071206">
+تواصل معنا واتساب
+</a>
 
 </section>
-
-
-
-<section id="contact">
-
-<div class="title">
-
-<h2>📞 تواصل معنا</h2>
-
-<p>07727071206</p>
-
-</div>
-
-</section>
-
-
 
 <footer>
-
-© 2026 RJ للأكلات السريعة
-
+© 2026 RJ للأكلات السريعة - جميع الحقوق محفوظة
 </footer>
-
 
 <script>
 
-let cart = [];
+let cart=[];
 
-const deliveryFee = 2000;
+const deliveryFee=2000;
 
+function addToCart(name,price){
 
-function addItem(name, price) {
+let item=cart.find(x=>x.name===name);
 
-    const existing = cart.find(item => item.name === name);
-
-    if (existing) {
-        existing.quantity++;
-    } else {
-        cart.push({
-            name: name,
-            price: price,
-            quantity: 1
-        });
-    }
-
-    updateCart();
-
-    document.getElementById("order")
-        .scrollIntoView({ behavior: "smooth" });
+if(item){
+item.qty++;
+}else{
+cart.push({
+name:name,
+price:price,
+qty:1
+});
 }
 
-
-function increaseItem(index) {
-
-    cart[index].quantity++;
-
-    updateCart();
-}
-
-
-function decreaseItem(index) {
-
-    cart[index].quantity--;
-
-    if (cart[index].quantity <= 0) {
-        cart.splice(index, 1);
-    }
-
-    updateCart();
-}
-
-
-function removeItem(index) {
-
-    cart.splice(index, 1);
-
-    updateCart();
-}
-
-
-function updateCart() {
-
-    const container =
-        document.getElementById("cartItems");
-
-    const totalElement =
-        document.getElementById("total");
-
-
-    if (cart.length === 0) {
-
-        container.innerHTML =
-            "<p>🛒 لا توجد وجبات في الطلب.</p>";
-
-        totalElement.innerText = "0";
-
-        return;
-    }
-
-
-    let subtotal = 0;
-
-    container.innerHTML = "";
-
-
-    cart.forEach((item, index) => {
-
-        const itemTotal =
-            item.price * item.quantity;
-
-        subtotal += itemTotal;
-
-
-        container.innerHTML += `
-
-        <div class="cart-item">
-
-            <div>
-
-                <strong>
-                    ${item.name}
-                </strong>
-
-                <br>
-
-                <small>
-                    ${item.price.toLocaleString()} د.ع ×
-                    ${item.quantity}
-                </small>
-
-            </div>
-
-
-            <div>
-
-                <button
-                    onclick="decreaseItem(${index})">
-                    −
-                </button>
-
-
-                <strong style="margin:0 8px;">
-                    ${item.quantity}
-                </strong>
-
-
-                <button
-                    onclick="increaseItem(${index})">
-                    +
-                </button>
-
-
-                <button
-                    onclick="removeItem(${index})"
-                    style="margin-right:8px;">
-                    🗑️
-                </button>
-
-            </div>
-
-        </div>
-
-        `;
-
-    });
-
-
-    const delivery =
-        subtotal > 0 ? deliveryFee : 0;
-
-
-    const finalTotal =
-        subtotal + delivery;
-
-
-    totalElement.innerHTML = `
-
-        <div>
-            قيمة الطلب:
-            ${subtotal.toLocaleString()} د.ع
-        </div>
-
-        <div>
-            🚚 التوصيل:
-            ${delivery.toLocaleString()} د.ع
-        </div>
-
-        <div style="margin-top:10px;">
-            💰 الإجمالي:
-            ${finalTotal.toLocaleString()} د.ع
-        </div>
-
-    `;
+renderCart();
 
 }
 
+function renderCart(){
 
-function sendOrder() {
+let box=document.getElementById("cartItems");
 
-    if (cart.length === 0) {
+if(cart.length===0){
 
-        alert("🛒 أضف وجبة واحدة على الأقل.");
+box.innerHTML="السلة فارغة";
+document.getElementById("total").innerText="0";
 
-        return;
-    }
+return;
+}
 
+let html="";
+let total=0;
 
-    const name =
-        document.getElementById("name").value.trim();
+cart.forEach((item,index)=>{
 
+let subtotal=item.price*item.qty;
 
-    const address =
-        document.getElementById("address").value.trim();
+total+=subtotal;
 
+html+=`
 
-    const notes =
-        document.getElementById("notes").value.trim();
+<div class="cart-item">
 
+<div>
+<strong>${item.name}</strong><br>
+${item.price.toLocaleString()} د.ع
+</div>
 
-    if (name === "") {
+<div class="qty">
 
-        alert("اكتب اسمك أولاً.");
+<button onclick="changeQty(${index},-1)">−</button>
 
-        return;
-    }
+<span>${item.qty}</span>
 
+<button onclick="changeQty(${index},1)">+</button>
 
-    if (address === "") {
+<button onclick="removeItem(${index})">🗑️</button>
 
-        alert("اكتب عنوان التوصيل.");
+</div>
 
-        return;
-    }
+</div>
 
+`;
 
-    let subtotal = 0;
+});
 
+html+=`
+<hr>
+<div style="margin-top:15px">
+أجرة التوصيل: ${deliveryFee.toLocaleString()} د.ع
+</div>
+`;
 
-    let message =
-        "🍔 *طلب جديد - RJ للأكلات السريعة*%0A";
+box.innerHTML=html;
 
-    message +=
-        "━━━━━━━━━━━━━━%0A";
-
-
-    message +=
-        "👤 الاسم: " +
-        encodeURIComponent(name) +
-        "%0A";
-
-
-    message +=
-        "📍 العنوان: " +
-        encodeURIComponent(address) +
-        "%0A%0A";
-
-
-    message +=
-        "🛒 *الطلب:*%0A";
-
-
-    cart.forEach(item => {
-
-        const itemTotal =
-            item.price * item.quantity;
-
-
-        subtotal += itemTotal;
-
-
-        message +=
-            "• " +
-            encodeURIComponent(item.name) +
-            " × " +
-            item.quantity +
-            " = " +
-            itemTotal.toLocaleString() +
-            " د.ع%0A";
-
-    });
-
-
-    const delivery =
-        deliveryFee;
-
-
-    const finalTotal =
-        subtotal + delivery;message +=
-        "%0A💵 قيمة الطلب: " +
-        subtotal.toLocaleString() +
-        " د.ع";
-
-
-    message +=
-        "%0A🚚 التوصيل: " +
-        delivery.toLocaleString() +
-        " د.ع";
-
-
-    message +=
-        "%0A💰 *الإجمالي: " +
-        finalTotal.toLocaleString() +
-        " د.ع*";
-
-
-    if (notes !== "") {
-
-        message +=
-            "%0A%0A📝 ملاحظات: " +
-            encodeURIComponent(notes);
-
-    }
-
-
-    const phone =
-        "9647727071206";
-
-
-    const whatsappURL =
-        "https://wa.me/" +
-        phone +
-        "?text=" +
-        message;
-
-
-    window.open(
-        whatsappURL,
-        "_blank"
-    );
+document.getElementById("total").innerText=
+(total+deliveryFee).toLocaleString();
 
 }
+
+function changeQty(index,value){
+
+cart[index].qty+=value;
+
+if(cart[index].qty<=0){
+cart.splice(index,1);
+}
+
+renderCart();
+
+}
+
+function removeItem(index){
+
+cart.splice(index,1);
+
+renderCart();
+
+}
+
+function sendOrder(){
+
+if(cart.length===0){
+
+alert("السلة فارغة");
+
+return;
+}
+
+let name=document.getElementById("name").value.trim();
+
+let address=document.getElementById("address").value.trim();
+
+let notes=document.getElementById("notes").value.trim();
+
+if(!name || !address){
+
+alert("يرجى كتابة الاسم والعنوان");
+
+return;
+}
+
+let message="🍔 *طلب جديد من RJ للأكلات السريعة*%0A%0A";
+
+message+="👤 الاسم: "+name+"%0A";
+
+message+="📍 العنوان: "+address+"%0A%0A";
+
+message+="🛒 *الطلبات:*%0A";
+
+let total=0;
+
+cart.forEach(item=>{
+
+let subtotal=item.price*item.qty;
+
+total+=subtotal;
+
+message+="• "+item.name+
+" × "+item.qty+
+" = "+subtotal.toLocaleString()+" د.ع%0A";
+
+});
+
+message+="%0A🚚 التوصيل: "+
+deliveryFee.toLocaleString()+" د.ع";
+
+message+="%0A💰 *المجموع الكلي: "+
+(total+deliveryFee).toLocaleString()+" د.ع*";
+
+if(notes){
+
+message+="%0A📝 ملاحظات: "+notes;
+}
+
+let phone="9647727071206";
+
+window.open(
+"https://wa.me/"+phone+"?text="+message,
+"_blank"
+);
+
+}
+
+renderCart();
 
 </script>
-
 
 </body>
 </html>
